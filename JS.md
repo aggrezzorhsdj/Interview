@@ -1,3 +1,50 @@
+## Базовые вопросы
+### Типы данных в js
+number, bigint, string, boolean, null, undefined, symbol и object
+
+что выведет 
+```javascript
+console.log(null === null)
+console.log(null === undefined)
+console.log(1 == '1')
+
+```
+
+### Замыкания
+работа с контекстом (переменными, функциями, объектами и т.д.) внутри своего лексического окружения
+```javascript
+function outerFunction(x) {
+  let message = "Привет";
+  function innerFunction(y) {
+    return message + " " + x + " " + y;
+  }
+  return innerFunction;
+}
+
+let myClosure = outerFunction(5);
+console.log(myClosure(10));
+```
+
+// 'Привет 5 10'
+### Контекст
+```javascript
+const b = {
+	a: 1,
+	foo() {
+		console.log(this.a + '1')
+	}
+}
+const foo = b.foo;
+console.log(foo());
+```
+
+// 1
+
+Стрелочные функции, function declaration, function expression, в чем разница, как создать
+- В обычной функции есть arguments и this, в стрелочной - нет
+- стрелочная функция не может быть вызвана с new Fun()
+
+
 ## Event Loop
 Бесконечный цикл где js ожидает задачи и исполняет их. Пока есть задачи - выполняй с последеней и жди новой после выполнения. В лупе есть макрозадачи и микрозадачи
 
@@ -112,41 +159,6 @@ Promise.reject('a')
 ```
 // a2d1d3
 ```
-
-
-## Замыкания
-работа с контекстом (переменными, функциями, объектами и т.д.) внутри своего лексического окружения
-```javascript
-function outerFunction(x) {
-  let message = "Привет";
-  function innerFunction(y) {
-    return message + " " + x + " " + y;
-  }
-  return innerFunction;
-}
-
-let myClosure = outerFunction(5);
-console.log(myClosure(10));
-```
-
-// 'Привет 5 10'
-## Контекст
-```javascript
-const b = {
-	a: 1,
-	foo() {
-		console.log(this.a + '1')
-	}
-}
-const foo = b.foo;
-console.log(foo());
-```
-
-// 1
-
-Стрелочные функции, function declaration, function expression, в чем разница, как создать
-- В обычной функции есть arguments и this, в стрелочной - нет
-- стрелочная функция не может быть вызвана с new Fun()
 
 
 https://leetcode.com/problems/timeout-cancellation/
